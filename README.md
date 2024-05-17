@@ -1,4 +1,4 @@
-# GeoGussr Code Brute Force
+# GeoGussr Party Code Gussr
 
 ## Description
 This script tries to guess party codes until it finds a valid one. If a code is invalid then it just returns to the previous page and continues guessing.
