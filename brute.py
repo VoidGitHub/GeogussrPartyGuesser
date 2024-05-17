@@ -5,7 +5,6 @@ import random
 import keyboard
 
 errorImage = 'error.png'
-successImage = 'success.png' 
 
 letters = string.ascii_uppercase
 digits = string.digits
@@ -34,23 +33,24 @@ print("Switch to GeoGussr in the next 5 seconds")
 time.sleep(5)
 
 for code in combinations:
+    for letter in code:
+        pyautogui.typewrite(letter)
+
     pyautogui.typewrite(code)
-    pyautogui.press('enter')
+
+    for i in range(4):
+        pyautogui.press('backspace')
 
     if keyboard.is_pressed('shift'):
-        print("Script terminated by user.")
+        print("Script terminated")
         break
 
     try:
         if pyautogui.locateOnScreen(errorImage, confidence=0.8):
             print("Invalid code")
             pyautogui.hotkey('alt', 'left')
-            time.sleep(1)
-
-            for i in range(len(code)):
-                pyautogui.press('backspace')
-            time.sleep(0.1)
+            time.sleep(0.5)
     except pyautogui.ImageNotFoundException:
         print("Code Not Found")
 
-print("Finished trying all combinations.")
+print("Finished script")
